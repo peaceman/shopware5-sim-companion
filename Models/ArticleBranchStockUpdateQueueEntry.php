@@ -26,8 +26,8 @@ class ArticleBranchStockUpdateQueueEntry extends ModelEntity
     /**
      * @var Article
      *
-     * @ORM\OneToOne(targetEntity="Shopware\Models\Article\Article", cascade={"remove"})
-     * @ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="cascade", unique=true)
+     * @ORM\OneToOne(targetEntity="Shopware\Models\Article\Article")
+     * @ORM\JoinColumn(name="article_id", referencedColumnName="id", unique=true)
      */
     private $article;
 
