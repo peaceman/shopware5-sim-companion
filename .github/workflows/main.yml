@@ -50,7 +50,7 @@ jobs:
                   git checkout tags/${{ matrix.shopware-versions }}
                   php psh.phar init --DB_HOST=127.0.0.1 --DB_USER=root --DB_PASSWORD=root --SW_HOST=localhost
                   php /tmp/shopware/bin/console sw:plugin:install --clear-cache --activate n2305SimCompanion
-#                  /tmp/shopware/vendor/bin/phpunit --configuration custom/plugins/n2305SimCompanion/phpunit.xml.dist
+                  /tmp/shopware/vendor/bin/phpunit --configuration custom/plugins/n2305SimCompanion/phpunit.xml.dist
 
             - name: Prepare production artifact files
               working-directory: /tmp/shopware/custom/plugins/n2305SimCompanion
