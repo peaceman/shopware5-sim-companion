@@ -1,0 +1,15 @@
+{
+    "name": "n2305/simcompanion",
+    "type": "shopware-plugin",
+    "description": "Shopware Intersys Middleware companion plugin",
+    "version": "v1.0.0",
+    "license": "proprietary",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+
+        }
+    }
+}
