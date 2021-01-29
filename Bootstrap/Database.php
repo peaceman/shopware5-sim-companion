@@ -5,6 +5,7 @@ namespace n2305SimCompanion\Bootstrap;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use n2305SimCompanion\Models\ArticleBranchStock;
+use n2305SimCompanion\Models\ArticleBranchStockUpdateQueueEntry;
 
 class Database
 {
@@ -54,7 +55,8 @@ class Database
     private function getClassesMetaData()
     {
         return [
-            $this->entityManager->getClassMetadata(ArticleBranchStock::class)
+            $this->entityManager->getClassMetadata(ArticleBranchStock::class),
+            $this->entityManager->getClassMetadata(ArticleBranchStockUpdateQueueEntry::class),
         ];
     }
 }
