@@ -58,7 +58,7 @@ class ArticleBranchStock extends ModelEntity
     /**
      * @var Detail
      *
-     * @ORM\OneToOne(targetEntity="Shopware\Models\Article\Detail", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="Shopware\Models\Article\Detail", cascade={"remove"})
      * @ORM\JoinColumn(name="article_detail_id", referencedColumnName="id", onDelete="cascade", unique=false)
      */
     private $articleDetail;
