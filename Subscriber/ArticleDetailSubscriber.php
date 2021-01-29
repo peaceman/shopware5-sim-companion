@@ -16,7 +16,6 @@ class ArticleDetailSubscriber implements EventSubscriber
     /** @var LoggerInterface */
     private $logger;
 
-
     public function __construct(
         LoggerInterface $logger
     ) {
@@ -60,5 +59,10 @@ class ArticleDetailSubscriber implements EventSubscriber
 
         $articleId = $articleDetail->getArticleId() ?? $articleDetail->getArticle()->getId();
         $updateQueueRepo->queueUpdateForArticleId($articleId);
+
+        $this->logger->debug('Enqueue article for branch stock update', [
+            'articleId' => $articleId,
+            'articleDetailId' => $articleDetail->getId(),
+        ]);
     }
 }
