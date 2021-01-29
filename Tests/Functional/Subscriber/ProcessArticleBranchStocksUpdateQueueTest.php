@@ -2,13 +2,10 @@
 
 namespace n2305SimCompanion\Tests\Functional\Subscriber;
 
-use n2305SimCompanion\Models\ArticleBranchStockUpdateQueueEntry;
 use n2305SimCompanion\Subscriber\ProcessArticleBranchStocksUpdateQueue;
 use Psr\Log\NullLogger;
 use Shopware\Components\ContainerAwareEventManager;
 use Shopware\Components\Model\ModelManager;
-use Shopware\Models\Article\Article;
-use Shopware\Models\Article\Detail;
 use Shopware\Tests\Functional\Components\Plugin\TestCase;
 
 class ProcessArticleBranchStocksUpdateQueueTest extends TestCase
