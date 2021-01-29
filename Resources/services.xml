@@ -7,6 +7,9 @@
         <parameter key="n2305_sim_companion.logger.level">DEBUG</parameter>
     </parameters>
     <services>
-
+        <service id="n2305_sim_companion.subscriber.article_detail_subscriber" class="n2305SimCompanion\Subscriber\ArticleDetailSubscriber">
+            <argument type="service" id="n2305_sim_companion.logger" />
+            <tag name="doctrine.event_subscriber" />
+        </service>
     </services>
 </container>
