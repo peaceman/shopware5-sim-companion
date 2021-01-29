@@ -39,6 +39,9 @@ class ArticleBranchStockUpdater
         $stockByBranch = array_reduce(
             $article->getDetails()->toArray(),
             static function (array $carry, Detail $articleDetail): array {
+                $attribute = $articleDetail->getAttribute();
+                if (is_null($attribute)) return $carry;
+
                 $availability = json_decode((string) $articleDetail->getAttribute()->getAvailability(), true);
                 if (!is_array($availability)) return $carry;
 

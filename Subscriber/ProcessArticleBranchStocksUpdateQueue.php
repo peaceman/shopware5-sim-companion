@@ -52,7 +52,7 @@ class ProcessArticleBranchStocksUpdateQueue implements SubscriberInterface
     {
         $loggingContext = [
             'id' => $queueEntry->getId(),
-            'createdAt' => $queueEntry->getCreatedAt(),
+            'createdAt' => $queueEntry->getCreatedAt()->format(DATE_RFC3339),
             'articleId' => $queueEntry->getArticle()->getId(),
         ];
 

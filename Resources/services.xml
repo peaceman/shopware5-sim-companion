@@ -19,5 +19,16 @@
 
             <tag name="shopware.event_subscriber"/>
         </service>
+
+        <service id="n2305_sim_companion.subscriber.update_article_branch_stock" class="n2305SimCompanion\Subscriber\UpdateArticleBranchStock">
+            <argument type="service" id="n2305_sim_companion.service.article_branch_stock_updater"/>
+
+            <tag name="shopware.event_subscriber"/>
+        </service>
+
+        <service id="n2305_sim_companion.service.article_branch_stock_updater" class="n2305SimCompanion\Services\ArticleBranchStockUpdater">
+            <argument type="service" id="n2305_sim_companion.logger" />
+            <argument type="service" id="models"/>
+        </service>
     </services>
 </container>
