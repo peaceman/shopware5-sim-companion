@@ -30,5 +30,10 @@
             <argument type="service" id="n2305_sim_companion.logger" />
             <argument type="service" id="models"/>
         </service>
+
+        <service id="n2305_sim_companion.search_bundle_dbal.condition.branch_availability_condition_handler"
+                 class="n2305SimCompanion\SearchBundleDBAL\Condition\BranchAvailabilityConditionHandler">
+            <tag name="condition_handler_dbal"/>
+        </service>
     </services>
 </container>
