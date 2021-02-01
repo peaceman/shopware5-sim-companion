@@ -53,4 +53,21 @@ class n2305SimCompanion extends Plugin
 
         Shopware()->Models()->generateAttributeModels($attributeTables);
     }
+
+    public static function getSubscribedEvents()
+    {
+        return [
+            'Enlight_Controller_Action_PostDispatch_Backend_ProductStream' => 'extendProductStream',
+        ];
+    }
+
+    public function extendProductStream(\Enlight_Event_EventArgs $args)
+    {
+        /** @var \Shopware_Controllers_Backend_Customer $subject */
+        $subject = $args->getSubject();
+
+        $subject->View()->addTemplateDir(__DIR__ . '/Resources/views');
+
+        $subject->View()->extendsTemplate('backend/product_stream/n2305_sim_companion_product_stream_extension.js');
+    }
 }
