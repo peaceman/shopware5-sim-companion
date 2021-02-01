@@ -63,7 +63,7 @@ class n2305SimCompanion extends Plugin
 
     public function extendProductStream(\Enlight_Event_EventArgs $args)
     {
-        /** @var \Shopware_Controllers_Backend_Customer $subject */
+        /** @var \Shopware_Controllers_Backend_ProductStream $subject */
         $subject = $args->getSubject();
 
         $subject->View()->addTemplateDir(__DIR__ . '/Resources/views');
