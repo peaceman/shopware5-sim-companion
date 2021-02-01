@@ -35,7 +35,7 @@ class ArticleBranchStock extends ModelEntity
     private $branch;
 
     /**
-     * @var string
+     * @var int
      *
      * @ORM\Column(name="stock", type="integer", nullable=false)
      */
