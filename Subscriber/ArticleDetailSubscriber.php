@@ -68,6 +68,11 @@ class ArticleDetailSubscriber implements EventSubscriber
         $updateQueueRepo = $modelManager->getRepository(ArticleBranchStockUpdateQueueEntry::class);
 
         $articleId = $articleDetail->getArticleId() ?? $articleDetail->getArticle()->getId();
+        $this->logger->debug('Enqueue article for branch stock update', [
+            'articleId' => $articleId,
+            'articleDetailId' => $articleDetail->getId(),
+        ]);
+
         $updateQueueRepo->queueUpdateForArticleId($articleId);
     }
 }
