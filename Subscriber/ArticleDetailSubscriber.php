@@ -10,6 +10,7 @@ use n2305SimCompanion\Models\ArticleBranchStockUpdateQueueEntryRepo;
 use Psr\Log\LoggerInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Article\Detail;
+use Throwable;
 
 class ArticleDetailSubscriber implements EventSubscriber
 {
@@ -45,11 +46,20 @@ class ArticleDetailSubscriber implements EventSubscriber
 
     private function handleModelEvent(LifecycleEventArgs $args): void
     {
-        $model = $args->getEntity();
-        if (!($model instanceof Detail))
-            return;
+        try {
+            $model = $args->getEntity();
+            if (!($model instanceof Detail))
+                return;
 
-        $this->queueForBranchStockUpdate($args->getEntityManager(), $model);
+            $this->queueForBranchStockUpdate($args->getEntityManager(), $model);
+        } catch (Throwable $e) {
+            $this->logger->warn('An exception occurred during branch stock update queueing', [
+                'articleDetailId' => $model->getId() ?? null,
+                'e' => [
+                    'message' => $e->getMessage(),
+                ],
+            ]);
+        }
     }
 
     private function queueForBranchStockUpdate(ModelManager $modelManager, Detail $articleDetail): void
@@ -59,10 +69,5 @@ class ArticleDetailSubscriber implements EventSubscriber
 
         $articleId = $articleDetail->getArticleId() ?? $articleDetail->getArticle()->getId();
         $updateQueueRepo->queueUpdateForArticleId($articleId);
-
-        $this->logger->debug('Enqueue article for branch stock update', [
-            'articleId' => $articleId,
-            'articleDetailId' => $articleDetail->getId(),
-        ]);
     }
 }
