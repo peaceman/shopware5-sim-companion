@@ -53,7 +53,7 @@ class ArticleDetailSubscriber implements EventSubscriber
 
             $this->queueForBranchStockUpdate($args->getEntityManager(), $model);
         } catch (Throwable $e) {
-            $this->logger->warn('An exception occurred during branch stock update queueing', [
+            $this->logger->warning('An exception occurred during branch stock update queueing', [
                 'articleDetailId' => $model->getId() ?? null,
                 'e' => [
                     'message' => $e->getMessage(),
